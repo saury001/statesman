@@ -1,0 +1,23 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'kotlin-kapt'
+}
+group = "com.github.saury001"
+
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    annotationProcessor 'com.google.auto.service:auto-service:1.0'
+    implementation 'com.google.auto.service:auto-service:1.0'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.21"
+
+    implementation 'com.squareup:kotlinpoet:1.8.0'
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.5.21'
+    implementation project(path: ':statesman-annotations')
+}
