@@ -2,6 +2,8 @@ plugins {
     id 'java-library'
     id 'kotlin'
     id 'kotlin-kapt'
+    id 'maven-publish'
+
 }
 group = "com.github.saury001"
 
@@ -12,8 +14,8 @@ java {
 }
 
 dependencies {
-    annotationProcessor 'com.google.auto.service:auto-service:1.0'
-    implementation 'com.google.auto.service:auto-service:1.0'
+//    annotationProcessor 'com.google.auto.service:auto-service:1.0'
+//    implementation 'com.google.auto.service:auto-service:1.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.21"
 

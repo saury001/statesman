@@ -1,18 +1,15 @@
 package com.saurabhbadola.statesman_annotation_processor
 
 
-import com.google.auto.service.AutoService
 import com.saurabhbadola.statesman.annotations.State
 import com.saurabhbadola.statesman.annotations.StateField
 import com.saurabhbadola.statesman_annotation_processor.codegen.StateCodeBuilder
 import com.saurabhbadola.statesman_annotation_processor.models.PersistentFieldData
 import com.saurabhbadola.statesman_annotation_processor.models.StateData
-
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import java.io.File
 import javax.annotation.processing.*
-import javax.annotation.processing.Processor
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.Element
 import javax.lang.model.element.TypeElement
@@ -22,7 +19,7 @@ import kotlin.reflect.jvm.internal.impl.builtins.jvm.JavaToKotlinClassMap
 import kotlin.reflect.jvm.internal.impl.name.FqName
 
 
-@AutoService(Processor::class)
+//@AutoService(Processor::class)
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 class Processor : AbstractProcessor() {
 
