@@ -4,21 +4,10 @@ plugins {
     id 'maven-publish'
 }
 
-group = "com.github.saury001.statesman"
+//group = "com.github.saury001.statesman"
 
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.saury001.statesman'
-                artifactId = 'statesman'
-                version = '1.0'
-            }
-        }
-    }
-}
+//
 
 
 android {
@@ -33,6 +22,7 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+
     buildTypes {
         release {
             minifyEnabled false
@@ -45,6 +35,20 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.saury001'
+                artifactId = 'statesman'
+                version = '1.0.1'
+            }
+        }
     }
 }
 

@@ -4,12 +4,26 @@ plugins {
     id 'kotlin-kapt'
     id 'maven-publish'
 }
-group = "com.github.saury001.statesman"
+//group = "com.github.saury001.statesman"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
+
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.github.saury001'
+//                artifactId = 'statesman'
+//                version = '1.0'
+//            }
+//        }
+//    }
+//}
+
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.21"
