@@ -4,12 +4,6 @@ plugins {
     id 'maven-publish'
 }
 
-//group = "com.github.saury001.statesman"
-
-
-//
-
-
 android {
     compileSdk 31
 
@@ -44,9 +38,9 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.saury001'
+                groupId = 'com.github.saury001.statesman'
                 artifactId = 'statesman'
-                version = '1.0.1'
+                version = '1.0.2'
             }
         }
     }

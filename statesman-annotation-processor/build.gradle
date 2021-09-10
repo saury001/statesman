@@ -4,25 +4,22 @@ plugins {
     id 'kotlin-kapt'
     id 'maven-publish'
 }
-//group = "com.github.saury001.statesman"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            release(MavenPublication) {
-//                from components.release
-//                groupId = 'com.github.saury001'
-//                artifactId = 'statesman'
-//                version = '1.0'
-//            }
-//        }
-//    }
-//}
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.saury001.statesman'
+            artifactId = 'statesman-annotation-processor'
+            version = '1.0.2'
+            from components.java
+        }
+    }
+}
 
 
 dependencies {
