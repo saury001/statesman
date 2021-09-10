@@ -4,6 +4,9 @@ plugins {
     id 'maven-publish'
 }
 
+group = "com.github.saury001.statesman"
+
+
 afterEvaluate {
     publishing {
         publications {
