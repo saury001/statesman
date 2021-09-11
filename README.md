@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/saury001/statesman.svg)](https://jitpack.io/#saury001/statesman)
+
 # Statesman - An attempt to create react-like state management in android
 
 Statesman is an android library that imitates react-like state management in android programming. 
