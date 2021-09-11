@@ -38,6 +38,18 @@ If you are using Kotlin, replace annotationProcessor with kapt.
 
 ```
 
+## How to use
+
+Create a simple POJO or data class in case that you are using Kotlin and annotate that class with State and then for every field you want in your state just annotate that with StateField annotation.
+
+```bash
+@State
+data class MyObject(
+  @StateField valueA:String,
+  @StateField valueB:Int
+)
+
+```
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
