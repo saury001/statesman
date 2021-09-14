@@ -8,7 +8,7 @@ abstract class BaseActivity<T : BaseState> : AppCompatActivity() {
 
     private val TAG = "LoginViewModel.TAG"
 
-    private var baseViewModel: BaseViewModel<T>? = null
+    private lateinit var baseViewModel: BaseViewModel<T>
     abstract fun createViewModel(): BaseViewModel<T>
     abstract fun onStateChanged(newState: T)
     abstract fun onNavigationRouteChange(
@@ -21,17 +21,18 @@ abstract class BaseActivity<T : BaseState> : AppCompatActivity() {
         baseViewModel = createViewModel()
         super.onCreate(savedInstanceState)
 
-        baseViewModel!!.state.observe(this, { newState ->
+        baseViewModel.state.observe(this, { newState ->
             onStateChanged(newState)
         })
-        baseViewModel!!.route.observe(this, { newRoute ->
+
+        baseViewModel.route.observe(this, { newRoute ->
             onNavigationRouteChange(newRoute)
         })
-        baseViewModel!!.createInitialState()
+        baseViewModel.createInitialState()
     }
 
     fun getViewModel(): BaseViewModel<T> {
-        return baseViewModel!!
+        return baseViewModel
     }
 
     fun showLoading(loadingText: String) {

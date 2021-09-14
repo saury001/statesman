@@ -10,5 +10,6 @@ abstract class BaseState(
      * */
     abstract fun changeToNewStateFrom(newState: BaseState): BaseState
     abstract fun getCopy(): BaseState
+    abstract fun compareTo(state:BaseState):Boolean
 
 }

@@ -6,19 +6,11 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 
 open class BaseFragment<T : BaseViewModel<out BaseState>?> : Fragment() {
-    protected var viewModel: T? = null
 
-
-    override fun onAttach(context: Context) {
-        Log.d("LoginViewModel.TAG", "onAttach: ")
-        super.onAttach(context)
-
-//        viewModel = (requireActivity() as BaseActivity<out BaseState>).getViewModel() as T
-    }
+    private var viewModel: T? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = (requireActivity() as BaseActivity<out BaseState>).getViewModel() as T
-        Log.d("LoginViewModel.TAG", "onCreate: ")
+        viewModel = ((requireActivity() as BaseActivity<out BaseState>).getViewModel() as T)
     }
 }
