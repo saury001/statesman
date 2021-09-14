@@ -6,6 +6,18 @@ Statesman is an android library that imitates react-like state management in and
 
 ## Download and installation
 
+Add the JitPack repository to your project-level build.gradle file
+```groovy
+
+ allprojects {
+		repositories {
+			//...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+```
+
 Use gradle dependency manager for downloading jars for the library
 
 ```groovy
