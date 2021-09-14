@@ -10,11 +10,11 @@ Add the JitPack repository to your project-level build.gradle file
 ```groovy
 
  allprojects {
-		repositories {
-			//...
-			maven { url 'https://jitpack.io' }
-		}
+       repositories {
+	   //...
+	   maven { url 'https://jitpack.io' }
 	}
+  }
 
 ```
 
