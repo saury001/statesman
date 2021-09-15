@@ -40,10 +40,10 @@ abstract class BaseViewModel<T : BaseState>(application: Application) :
      * */
     fun setState(newStateVal: T) {
         val oldState = getCurrentState()
+        val modifiedState = oldState.changeToNewStateFrom(newStateVal) as T
 
-        if (!newStateVal.compareTo(oldState)) {
+        if (!modifiedState.compareTo(oldState)) {
             this.oldState = getCurrentState()
-            val modifiedState = oldState.changeToNewStateFrom(newStateVal) as T
             this.currentState = modifiedState
             this._state.postValue(modifiedState)
         }
