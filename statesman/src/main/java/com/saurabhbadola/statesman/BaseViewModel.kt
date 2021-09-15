@@ -11,41 +11,43 @@ abstract class BaseViewModel<T : BaseState>(application: Application) :
     AndroidViewModel(application),
     Observable {
 
-    private var _state = CustomMutableLiveData(createInitialState())
-    var state: LiveData<T> = _state
+    companion object {
+        val DEFAULT_ROUTE = NavigationRoute("No Change", 0)
+    }
 
-    private var currentState = createInitialState()
+    private var _observableState = CustomMutableLiveData(createInitialState())
+    var observableState: LiveData<T> = _observableState
+
+    protected var currentState = createInitialState()
     var oldState = createInitialState()
 
-    var route: MutableLiveData<NavigationRoute> =
-        MutableLiveData(
-            NavigationRoute("No Change", 0)
-        )
-    var oldRoute = route.value
+
+    private var _observableRoute = MutableLiveData(DEFAULT_ROUTE)
+    var observableRoute: LiveData<NavigationRoute> = _observableRoute
+    var oldRoute = DEFAULT_ROUTE
+    var currentRoute = DEFAULT_ROUTE
 
 
     abstract fun createInitialState(): T
 
     fun navigateTo(navigationRoute: NavigationRoute) {
-        oldRoute = route.value
-        route.postValue(navigationRoute)
+        oldRoute = currentRoute
+        if (navigationRoute.routeName != oldRoute.routeName || navigationRoute.routeValue != oldRoute.routeValue)
+            _observableRoute.postValue(navigationRoute)
     }
 
-    public open fun getCurrentState(): T {
-        return currentState
-    }
 
     /**
      * @param newStateVal contains the value that would change in the new state
      * */
     fun setState(newStateVal: T) {
-        val oldState = getCurrentState()
+        val oldState = currentState
         val modifiedState = oldState.changeToNewStateFrom(newStateVal) as T
 
         if (!modifiedState.compareTo(oldState)) {
-            this.oldState = getCurrentState()
+            this.oldState = currentState
             this.currentState = modifiedState
-            this._state.postValue(modifiedState)
+            this._observableState.postValue(modifiedState)
         }
     }
 

@@ -10,9 +10,10 @@ abstract class BaseActivity<T : BaseState> : AppCompatActivity() {
 
     private lateinit var baseViewModel: BaseViewModel<T>
     abstract fun createViewModel(): BaseViewModel<T>
-    abstract fun onStateChanged(newState: T)
+    abstract fun onStateChanged(newState: T, oldState: T)
     abstract fun onNavigationRouteChange(
-        navigationRoute: NavigationRoute,
+        newRoute: NavigationRoute,
+        oldRoute: NavigationRoute
     )
 
 
@@ -21,12 +22,12 @@ abstract class BaseActivity<T : BaseState> : AppCompatActivity() {
         baseViewModel = createViewModel()
         super.onCreate(savedInstanceState)
 
-        baseViewModel.state.observe(this, { newState ->
-            onStateChanged(newState)
+        baseViewModel.observableState.observe(this, { newState ->
+            onStateChanged(newState, baseViewModel.oldState)
         })
 
-        baseViewModel.route.observe(this, { newRoute ->
-            onNavigationRouteChange(newRoute)
+        baseViewModel.observableRoute.observe(this, { newRoute ->
+            onNavigationRouteChange(newRoute, baseViewModel.oldRoute)
         })
         baseViewModel.createInitialState()
     }
