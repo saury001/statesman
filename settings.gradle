@@ -4,14 +4,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter()
-        maven{
-            url "https://jitpack.io"
-        }
-         // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "StatesMan"
 include ':statesman'
 include ':statesman-annotations'
 include ':statesman-annotation-processor'
-include ':examples'

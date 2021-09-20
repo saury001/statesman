@@ -9,7 +9,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'com.github.saury001.statesman'
             artifactId = 'statesman-annotations'
-            version = '1.0.2'
+            version = '1.0.4'
             from components.java
         }
     }
