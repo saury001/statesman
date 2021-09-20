@@ -23,9 +23,9 @@ Use gradle dependency manager for downloading jars for the library
 ```groovy
 
 dependencies {
-    implementation 'com.github.saury001.statesman:statesman:1.0.2'
-    implementation 'com.github.saury001.statesman:statesman-annotations:1.0.2'
-    annotationProcessor 'com.github.saury001.statesman:statesman-annotation-processor:1.0.2'
+    implementation 'com.github.saury001.statesman:statesman:1.0.4'
+    implementation 'com.github.saury001.statesman:statesman-annotations:1.0.4'
+    annotationProcessor 'com.github.saury001.statesman:statesman-annotation-processor:1.0.4'
 }
 
 ```
