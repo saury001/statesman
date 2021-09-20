@@ -14,3 +14,4 @@ rootProject.name = "StatesMan"
 include ':statesman'
 include ':statesman-annotations'
 include ':statesman-annotation-processor'
+include ':examples'

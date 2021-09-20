@@ -19,6 +19,7 @@ class StateCodeBuilder(
         val propertySpecs = mutableListOf<PropertySpec>()
         val memberFields = mutableListOf<String>()
         val changeAnalyserFields = mutableListOf<String>()
+        var compareToFields = mutableListOf<String>()
 
         data.persistentFieldData?.forEach {
             var stringClassName = it.fieldType
@@ -74,6 +75,7 @@ class StateCodeBuilder(
                 ).initializer("false").mutable(true).build()
             )
             changeAnalyserFields.add("if(newState.${memberFieldName}Changed) oldState.$memberFieldName = newState.$memberFieldName")
+            compareToFields.add("this.${memberFieldName} == state.${memberFieldName} &&")
             memberFields.add(memberFieldName)
         }
         var returnStatement = ""
@@ -114,6 +116,25 @@ class StateCodeBuilder(
                     .addStatement("if(newState.mErrorMessageChanged) oldState.mErrorMessage = newState.mErrorMessage")
                     .addStatement("if(newState.mLoadingMessageChanged) oldState.mLoadingMessage = newState.mLoadingMessage")
                     .addStatement("return oldState")
+                    .build()
+            ).addFunction(
+                FunSpec.builder("compareTo")
+                    .returns(classTypeBoolean)
+                    .addModifiers(KModifier.OVERRIDE)
+                    .addParameter(
+                        "state",
+                        ClassName("com.saurabhbadola.statesman", "BaseState")
+                    )
+                    .addStatement("state as %N", stateName)
+                    .addStatement("if(")
+                    .addStatement(compareToFields.joinToString(separator = "\n"))
+                    .addStatement("this.mIsLoading == state.mIsLoading &&")
+                    .addStatement("this.mAlertMessage == state.mAlertMessage &&")
+                    .addStatement("this.mErrorMessage == state.mErrorMessage &&")
+                    .addStatement("this.mLoadingMessage == state.mLoadingMessage")
+                    .addStatement(")")
+                    .addStatement("return true")
+                    .addStatement("return false")
                     .build()
             )
             .build()
