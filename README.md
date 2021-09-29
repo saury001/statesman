@@ -30,7 +30,7 @@ dependencies {
 
 ```
 
-If you are using Kotlin, replace annotationProcessor with kapt.
+If you are using Kotlin, replace `annotationProcessor` with `kapt`.
 
 ### In your app level build.gradle file, make following changes:
 
@@ -234,7 +234,7 @@ OnClick methods can be called directly from the view using data binding like
             android:text="4" />
 ```
 
-#### For more clarity, please check out the example in the code.
+#### For more clarity, please check out the example [here](https://github.com/saury001/statesman-example).
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
