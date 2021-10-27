@@ -49,7 +49,7 @@ abstract class BaseActivity<T : BaseState> : AppCompatActivity() {
     }
 
     private fun dismissLoading() {
-
+0
     }
 
     override fun onDestroy() {

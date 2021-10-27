@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 
 open class BaseFragment<T : BaseViewModel<out BaseState>> : Fragment() {
 
-    private lateinit var viewModel: T
+    protected lateinit var viewModel: T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
