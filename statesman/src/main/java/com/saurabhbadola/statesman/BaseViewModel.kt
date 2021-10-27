@@ -14,7 +14,7 @@ abstract class BaseViewModel<T : BaseState>(application: Application) :
 
     private val isInitialStateChanged = true
 
-    protected var currentState = createInitialState()
+    var currentState = createInitialState()
     internal var oldState = currentState
 
     private var _observableState = CustomMutableLiveData(currentState)
