@@ -23,7 +23,7 @@ abstract class BaseViewModel<T : BaseState>(application: Application) :
     private var _observableRoute = MutableLiveData(DEFAULT_ROUTE)
     var observableRoute: LiveData<NavigationRoute> = _observableRoute
 
-    protected var temporaryState:T = createInitialState()
+    private var temporaryState:T = createInitialState()
 
     protected var currentRoute = DEFAULT_ROUTE
     internal var oldRoute = DEFAULT_ROUTE
